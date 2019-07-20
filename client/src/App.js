@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PhotoSearch from './components/ImageSearch/PhotoSearch.js'
 import Navbar from './components/Navbar'
 import Form from './components/Form/Form'
+import Collections from './components/Collections/Collections'
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 				<Switch>
 					<Route exact path='/' />
 					<Route path='/photos' component={PhotoSearch} />
+					<Route path='/collections' component={Collections} />
 					<Route path='/collections/new' component={Form} />
 				</Switch>
 			</Router>

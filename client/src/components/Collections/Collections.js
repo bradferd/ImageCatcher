@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class Collections extends Component {
 	state = {
 		collections: []
 	}
 
-	componentDIdMount() {
-		getAll()
+	componentDidMount() {
+		this.getAllCollections()
 	}
 
 	getAllCollections = async () => {
@@ -18,7 +20,9 @@ export default class Collections extends Component {
 		let collectionsList = this.state.collections.map(collection => {
 			return (
 				<div>
-					<Link key={collection._id} to={`/collections/${collection._id}`} />
+					<Link key={collection._id} to={`/collections/${collection._id}`}>
+						{collection.name}
+					</Link>
 				</div>
 			)
 		})
