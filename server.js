@@ -6,7 +6,7 @@ const { collectionRouter } = require('./controllers/collection.js')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(`${__dirname}/client/build`))
-app.use('/api/collections', templateRouter)
+app.use('/api/collections', collectionRouter)
 app.get('/*', (req, res) => {
 	res.sendFile(`${__dirname}/client/build/index.html`)
 })

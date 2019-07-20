@@ -7,6 +7,4 @@ const CollectionSchema = new mongoose.Schema({
 
 const CollectionCollection = mongoose.model('Collections', CollectionSchema)
 
-module.exports = {
-	getHelloWorldString
-}
+module.exports = {}
