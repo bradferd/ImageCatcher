@@ -16,7 +16,7 @@ export default class PhotoSearch extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='ui container' style={{ marginTop: '10px' }}>
 				<SearchBar onSearchSubmit={this.onSearchSubmit} />
 				<ImageList images={this.state.images} />
 			</div>

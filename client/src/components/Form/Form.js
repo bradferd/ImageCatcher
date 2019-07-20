@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class Form extends Component {
 	state = {
@@ -22,7 +23,7 @@ export default class Form extends Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleSubmit} className='ui form'>
 					<label htmlFor='collection-name'>Collection Name</label>
 					<input
 						onChange={this.handleInputChange}
@@ -40,7 +41,11 @@ export default class Form extends Component {
 						name='description'
 						value={this.state.newCollection.description}
 					/>
-					<input type='submit' value='Create Collection' />
+					<input
+						type='submit'
+						value='Create Collection'
+						className='ui button'
+					/>
 				</form>
 			</div>
 		)

@@ -13,9 +13,9 @@ export default class SearchBar extends Component {
 
 	render() {
 		return (
-			<div>
-				<form onSubmit={this.onFormSubmit}>
-					<div>
+			<div className='ui segment'>
+				<form onSubmit={this.onFormSubmit} className='ui form'>
+					<div className='field'>
 						<label>Image Search</label>
 						<input
 							type='text'
