@@ -7,4 +7,24 @@ const CollectionSchema = new mongoose.Schema({
 
 const CollectionCollection = mongoose.model('Collections', CollectionSchema)
 
-module.exports = {}
+const getAllCollections = () => CollectionCollection.find()
+
+const getCollection = collectionId =>
+	CollectionCollection.findById(collectionId)
+
+const addNewCollection = collectionObject =>
+	CollectionCollection.create(collectionObject)
+
+const updateCollection = (collectionId, collectionObject) =>
+	CollectionCollection.findByIdAndUpdate(collectionId, collectionObject)
+
+const deleteCollection = collectionId =>
+	CollectionCollection.findByIdAndDelete(collectionId)
+
+module.exports = {
+	getAllCollections,
+	getCollection,
+	addNewCollection,
+	updateCollection,
+	deleteCollection
+}
