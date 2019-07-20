@@ -9,8 +9,8 @@ export default class Navbar extends Component {
 					ImageCatcher
 				</Link>
 				<div className='right menu'>
-					<Link to='/photos' className='item'>
-						Image Search
+					<Link to='/collections/new' className='item'>
+						New Collection
 					</Link>
 					<Link to='/collections' className='item'>
 						All Collections

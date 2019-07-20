@@ -4,9 +4,7 @@ const collectionApi = require('../models/collection.js')
 const collectionRouter = express.Router()
 
 collectionRouter.get('/', async (req, res) => {
-	const collections = await collectionApi.getCollections(
-		req.params.collectionId
-	)
+	const collections = await collectionApi.getAllCollections()
 	res.json(collections)
 })
 

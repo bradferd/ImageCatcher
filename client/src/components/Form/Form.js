@@ -22,7 +22,7 @@ export default class Form extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='ui container'>
 				<form onSubmit={this.handleSubmit} className='ui form'>
 					<label htmlFor='collection-name'>Collection Name</label>
 					<input
