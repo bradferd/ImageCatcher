@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import unsplash from '../api/unsplash'
+import unsplash from '../../api/unsplash'
 import SearchBar from './SearchBar'
 import ImageList from './ImageList'
 
@@ -10,7 +10,7 @@ export default class PhotoSearch extends Component {
 		const response = await unsplash.get('/search/photos', {
 			params: { query: term }
 		})
-
+		console.log(response)
 		this.setState({ images: response.data.results })
 	}
 
