@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 export default class Form extends Component {
 	state = {
 		newCollection: {
 			name: '',
 			description: ''
-		}
+		},
+		redirectToCollections: false
 	}
 
 	handleInputChange = e => {
-		const copyCollection = { ...this.state.newCreature }
+		const copyCollection = { ...this.state.newCollection }
 		copyCollection[e.target.name] = e.target.value
 		this.setState({ newCollection: copyCollection })
 	}
@@ -18,9 +20,13 @@ export default class Form extends Component {
 	handleSubmit = e => {
 		e.preventDefault()
 		axios.post(`/api/collections`, this.state.newCollection)
+		this.setState({ redirectToCollections: true })
 	}
 
 	render() {
+		if (this.state.redirectToCollections) {
+			return <Redirect to='/collections' />
+		}
 		return (
 			<div className='ui container'>
 				<form onSubmit={this.handleSubmit} className='ui form'>
