@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 export default class Collection extends Component {
 	state = {
-		collection: {}
+		collection: {},
+		redirectToCollections: false
 	}
 
 	async componentDidMount() {
@@ -13,11 +15,21 @@ export default class Collection extends Component {
 		this.setState({ collection: res.data })
 	}
 
+	handleDeleteCollection = () => {
+		axios
+			.delete(`/api/collections/${this.state.collection._id}`)
+			.then(() => this.setState({ redirectToCollections: true }))
+	}
+
 	render() {
+		if (this.state.redirectToCollections) {
+			return <Redirect to='/collections' />
+		}
 		return (
 			<div>
 				<h1>{this.state.collection.name}</h1>
 				<p>{this.state.collection.description}</p>
+				<button onClick={this.handleDeleteCollection}>Delete Collection</button>
 			</div>
 		)
 	}
