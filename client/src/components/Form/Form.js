@@ -8,6 +8,7 @@ export default class Form extends Component {
 			name: '',
 			description: ''
 		},
+		isEditForm: false,
 		redirectToCollections: false
 	}
 

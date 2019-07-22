@@ -9,6 +9,7 @@ export default class SearchBar extends Component {
 		e.preventDefault()
 
 		this.props.onSearchSubmit(this.state.term)
+		this.setState({ term: '' })
 	}
 
 	render() {
