@@ -7,7 +7,7 @@ const PictureSchema = new mongoose.Schema({
 	collectionId: mongoose.Types.ObjectId
 })
 
-const PictureCollection = mongoose.model('Pictures', PicturesSchema)
+const PictureCollection = mongoose.model('Pictures', PictureSchema)
 
 const getPicturesByCollection = collectionId =>
 	PictureCollection.find({ collectionId })
