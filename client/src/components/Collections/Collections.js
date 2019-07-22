@@ -19,10 +19,8 @@ export default class Collections extends Component {
 	render() {
 		let collectionsList = this.state.collections.map(collection => {
 			return (
-				<div>
-					<Link key={collection._id} to={`/collections/${collection._id}`}>
-						{collection.name}
-					</Link>
+				<div key={collection._id}>
+					<Link to={`/collections/${collection._id}`}>{collection.name}</Link>
 				</div>
 			)
 		})
