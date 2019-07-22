@@ -1,7 +1,6 @@
 const mongoose = require('./connection.js')
 
 const PictureSchema = new mongoose.Schema({
-	name: String,
 	description: String,
 	imgSrc: String,
 	collectionId: mongoose.Types.ObjectId

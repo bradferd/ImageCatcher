@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(`${__dirname}/client/build`))
 app.use('/api/collections', collectionRouter)
-app.use('/api/pictures', PicsRouter)
+app.use('/api/collections/:collectionId/pics', PicsRouter)
 app.get('/*', (req, res) => {
 	res.sendFile(`${__dirname}/client/build/index.html`)
 })

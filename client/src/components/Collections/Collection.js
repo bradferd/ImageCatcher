@@ -90,7 +90,7 @@ export default class Collection extends Component {
 							Delete Collection
 						</button>
 						<button onClick={this.handleToggleEditForm}>Edit Collection</button>
-						<PhotoSearch />
+						<PhotoSearch {...this.props} />
 					</div>
 				)}
 			</div>

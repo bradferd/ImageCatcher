@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 class ImageCard extends React.Component {
 	constructor(props) {
@@ -21,13 +22,22 @@ class ImageCard extends React.Component {
 		this.setState({ spans })
 	}
 
+	addToCollection = () => {
+		console.log(this.props)
+		axios.post('/api/collections/:collectionId/pics', {
+			description: this.props.image.alt_description,
+			imgSrc: this.props.image.urls.normal,
+			collectionId: this.props.match.params.collectionId
+		})
+	}
+
 	render() {
 		const { description, urls } = this.props.image
 
 		return (
 			<div style={{ gridRowEnd: `span ${this.state.spans}` }}>
 				<img ref={this.imageRef} alt={description} src={urls.regular} />
-				<button>Add to collection</button>
+				<button onClick={this.addToCollection}>Add to collection</button>
 			</div>
 		)
 	}
