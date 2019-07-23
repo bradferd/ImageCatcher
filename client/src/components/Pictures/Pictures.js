@@ -29,6 +29,10 @@ export default class Pictures extends Component {
 				/>
 			)
 		})
-		return <div className='ui three stackable cards'>{pictures}</div>
+		return (
+			<div className='ui grid'>
+				<div className='three column row'>{pictures}</div>
+			</div>
+		)
 	}
 }

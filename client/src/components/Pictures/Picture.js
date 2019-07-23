@@ -10,13 +10,14 @@ export default class Picture extends Component {
 	}
 	render() {
 		return (
-			<div className='card'>
-				<div className='image'>
-					<img src={this.props.src} alt={this.props.description} />
-				</div>
-				<div className='content'>
-					<button onClick={this.handleDeleteImage}>Delete Image</button>
-				</div>
+			<div className='column'>
+				<img
+					className='ui medium rounded bordered image'
+					src={this.props.src}
+					alt={this.props.description}
+				/>
+
+				<button onClick={this.handleDeleteImage}>Delete Image</button>
 			</div>
 		)
 	}

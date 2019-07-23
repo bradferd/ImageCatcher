@@ -85,7 +85,7 @@ export default class Collection extends Component {
 					</div>
 				) : (
 					<div>
-						<div className='ui container'>
+						<div className='ui container masthead center aligned'>
 							<h1>{this.state.collection.name}</h1>
 							<p>{this.state.collection.description}</p>
 							<button onClick={this.handleDeleteCollection}>
@@ -95,11 +95,20 @@ export default class Collection extends Component {
 								Edit Collection
 							</button>
 						</div>
-						<div className='ui container'>
-							<Pictures {...this.props} />
-						</div>
-						<div className='ui container'>
-							<PhotoSearch {...this.props} />
+						<div className='ui segment'>
+							<div className='ui two column very relaxed grid'>
+								<div className='column'>
+									<div className='ui container'>
+										<PhotoSearch {...this.props} />
+									</div>
+								</div>
+								<div className='column'>
+									<div className='ui container'>
+										<h3>{this.state.collection.name}</h3>
+										<Pictures {...this.props} />
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				)}
