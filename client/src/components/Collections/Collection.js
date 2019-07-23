@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import PhotoSearch from '../ImageSearch/PhotoSearch'
+import Pictures from '../Pictures/Pictures'
 
 export default class Collection extends Component {
 	state = {
@@ -90,6 +91,7 @@ export default class Collection extends Component {
 							Delete Collection
 						</button>
 						<button onClick={this.handleToggleEditForm}>Edit Collection</button>
+						<Pictures {...this.props} />
 						<PhotoSearch {...this.props} />
 					</div>
 				)}
