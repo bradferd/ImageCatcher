@@ -19,11 +19,20 @@ export default class Collections extends Component {
 	render() {
 		let collectionsList = this.state.collections.map(collection => {
 			return (
-				<div key={collection._id}>
-					<Link to={`/collections/${collection._id}`}>{collection.name}</Link>
+				<div className='item' key={collection._id}>
+					<i className='camera retro middle aligned icon' />
+					<div className='content'>
+						<Link className='header' to={`/collections/${collection._id}`}>
+							{collection.name}
+						</Link>
+					</div>
 				</div>
 			)
 		})
-		return <div>{collectionsList}</div>
+		return (
+			<div className='ui container'>
+				<div className='ui divided list'>{collectionsList}</div>
+			</div>
+		)
 	}
 }

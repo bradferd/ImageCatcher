@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Form from './components/Form/Form'
 import Collections from './components/Collections/Collections'
 import Collection from './components/Collections/Collection'
+import Home from './components/Home/Landing'
 
 function App() {
 	return (
@@ -12,7 +13,7 @@ function App() {
 			<Router>
 				<Navbar />
 				<Switch>
-					<Route exact path='/' />
+					<Route exact path='/' component={Home} />
 					<Route path='/photos' component={PhotoSearch} />
 					<Route exact path='/collections' component={Collections} />
 					<Route path='/collections/new' component={Form} />

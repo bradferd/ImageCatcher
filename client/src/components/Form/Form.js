@@ -29,31 +29,43 @@ export default class Form extends Component {
 			return <Redirect to='/collections' />
 		}
 		return (
-			<div className='ui container'>
-				<form onSubmit={this.handleSubmit} className='ui form'>
-					<label htmlFor='collection-name'>Collection Name</label>
-					<input
-						onChange={this.handleInputChange}
-						type='text'
-						id='collection-name'
-						placeholder='Enter a name for this collection...'
-						name='name'
-						value={this.state.newCollection.name}
-					/>
-					<label htmlFor='collection-description'>Collection Description</label>
-					<input
-						onChange={this.handleInputChange}
-						type='text'
-						id='collection-description'
-						name='description'
-						value={this.state.newCollection.description}
-					/>
-					<input
-						type='submit'
-						value='Create Collection'
-						className='ui button'
-					/>
-				</form>
+			<div className='ui container' style={{ marginTop: '30px' }}>
+				<div className='ui middle aligned center aligned grid'>
+					<div className='column'>
+						<form onSubmit={this.handleSubmit} className='ui large form'>
+							<div className='field'>
+								<label htmlFor='collection-name'>Collection Name</label>
+								<input
+									onChange={this.handleInputChange}
+									type='text'
+									id='collection-name'
+									placeholder='Enter a name for this collection...'
+									name='name'
+									value={this.state.newCollection.name}
+									autocomplete='off'
+								/>
+							</div>
+							<div className='field'>
+								<label htmlFor='collection-description'>
+									Collection Description
+								</label>
+								<input
+									onChange={this.handleInputChange}
+									type='text'
+									id='collection-description'
+									name='description'
+									value={this.state.newCollection.description}
+									autocomplete='off'
+								/>
+							</div>
+							<input
+								type='submit'
+								value='Create Collection'
+								className='ui button'
+							/>
+						</form>
+					</div>
+				</div>
 			</div>
 		)
 	}
