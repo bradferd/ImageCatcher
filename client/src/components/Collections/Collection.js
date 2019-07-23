@@ -85,14 +85,22 @@ export default class Collection extends Component {
 					</div>
 				) : (
 					<div>
-						<h1>{this.state.collection.name}</h1>
-						<p>{this.state.collection.description}</p>
-						<button onClick={this.handleDeleteCollection}>
-							Delete Collection
-						</button>
-						<button onClick={this.handleToggleEditForm}>Edit Collection</button>
-						<Pictures {...this.props} />
-						<PhotoSearch {...this.props} />
+						<div className='ui container'>
+							<h1>{this.state.collection.name}</h1>
+							<p>{this.state.collection.description}</p>
+							<button onClick={this.handleDeleteCollection}>
+								Delete Collection
+							</button>
+							<button onClick={this.handleToggleEditForm}>
+								Edit Collection
+							</button>
+						</div>
+						<div className='ui container'>
+							<Pictures {...this.props} />
+						</div>
+						<div className='ui container'>
+							<PhotoSearch {...this.props} />
+						</div>
 					</div>
 				)}
 			</div>
