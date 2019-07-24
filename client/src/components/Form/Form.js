@@ -55,7 +55,7 @@ export default class Form extends Component {
 									id='collection-description'
 									name='description'
 									value={this.state.newCollection.description}
-									autocomplete='off'
+									autoComplete='off'
 								/>
 							</div>
 							<input

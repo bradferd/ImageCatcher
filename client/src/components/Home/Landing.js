@@ -35,7 +35,7 @@ export default class Landing extends Component {
 							<div className='six wide right floated column'>
 								<img
 									src='https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-									className='ui large bordered rounded image'
+									className='ui large rounded image'
 									alt='placeholder'
 								/>
 							</div>
@@ -47,8 +47,8 @@ export default class Landing extends Component {
 						<div className='row'>
 							<div className='six wide left floated column'>
 								<img
-									src='https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-									className='ui large bordered rounded image'
+									src='https://images.unsplash.com/photo-1526080676457-4544bf0ebba9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
+									className='ui large rounded image'
 									alt='placeholder'
 								/>
 							</div>

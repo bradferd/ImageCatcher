@@ -22,13 +22,13 @@ class ImageCard extends React.Component {
 		this.setState({ spans })
 	}
 
-	addToCollection = () => {
-		console.log(this.props)
-		axios.post('/api/collections/:collectionId/pics', {
+	addToCollection = async () => {
+		await axios.post('/api/collections/:collectionId/pics', {
 			description: this.props.image.alt_description,
 			imgSrc: this.props.image.urls.regular,
 			collectionId: this.props.match.params.collectionId
 		})
+		console.log(this.props)
 	}
 
 	render() {
