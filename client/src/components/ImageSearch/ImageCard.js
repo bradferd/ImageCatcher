@@ -29,6 +29,7 @@ class ImageCard extends React.Component {
 			collectionId: this.props.match.params.collectionId
 		})
 		console.log(this.props)
+		this.props.getAllPictureData()
 	}
 
 	render() {

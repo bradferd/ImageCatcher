@@ -25,6 +25,7 @@ export default class Collections extends Component {
 						<Link className='header' to={`/collections/${collection._id}`}>
 							{collection.name}
 						</Link>
+						<div className='description'>{collection.description}</div>
 					</div>
 				</div>
 			)

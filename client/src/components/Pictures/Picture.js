@@ -6,7 +6,7 @@ export default class Picture extends Component {
 		await Axios.delete(
 			`/api/collections/${this.props.collectionId}/pics/${this.props.id}`
 		)
-		this.props.getAll()
+		this.props.getAllPictureData()
 	}
 	render() {
 		return (

@@ -6,20 +6,31 @@ import Pictures from '../Pictures/Pictures'
 
 export default class Collection extends Component {
 	state = {
-		collection: {},
+		collection: [],
+		pictures: [],
 		redirectToCollections: false,
 		showEditForm: false
 	}
 
-	async componentDidMount() {
-		this.getAll()
+	componentDidMount() {
+		this.getAllCollectionData()
+		this.getAllPictureData()
 	}
 
-	getAll = async () => {
+	getAllCollectionData = async () => {
+		console.log('getAll-Collection called')
 		const res = await axios.get(
 			`/api/collections/${this.props.match.params.collectionId}`
 		)
+		console.log(res)
 		this.setState({ collection: res.data })
+	}
+
+	getAllPictureData = async () => {
+		const res = await axios.get(
+			`/api/collections/${this.props.match.params.collectionId}/pics`
+		)
+		this.setState({ pictures: res.data })
 	}
 
 	handleDeleteCollection = () => {
@@ -99,13 +110,20 @@ export default class Collection extends Component {
 							<div className='ui two column very relaxed grid'>
 								<div className='column'>
 									<div className='ui container'>
-										<PhotoSearch {...this.props} />
+										<PhotoSearch
+											getAllPictureData={this.getAllPictureData}
+											{...this.props}
+										/>
 									</div>
 								</div>
 								<div className='column'>
 									<div className='ui container'>
 										<h3>{this.state.collection.name}</h3>
-										<Pictures {...this.props} />
+										<Pictures
+											getAllPictureData={this.getAllPictureData}
+											pictures={this.state.pictures}
+											{...this.props}
+										/>
 									</div>
 								</div>
 							</div>

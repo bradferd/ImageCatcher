@@ -8,7 +8,6 @@ export default class PhotoSearch extends Component {
 
 	onSearchSubmit = async term => {
 		const response = await Axios.get('/api/search', { params: { query: term } })
-		console.log(response)
 		this.setState({ images: response.data.results })
 	}
 
@@ -16,7 +15,11 @@ export default class PhotoSearch extends Component {
 		return (
 			<div className='ui container' style={{ marginTop: '10px' }}>
 				<SearchBar onSearchSubmit={this.onSearchSubmit} />
-				<ImageList {...this.props} images={this.state.images} />
+				<ImageList
+					{...this.props}
+					getAllPictureData={this.props.getAllPictureData}
+					images={this.state.images}
+				/>
 			</div>
 		)
 	}
