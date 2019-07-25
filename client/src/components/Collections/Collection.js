@@ -47,7 +47,7 @@ export default class Collection extends Component {
 			this.state.collection
 		)
 		this.setState({ collection: res.data, showEditForm: false })
-		this.getAll()
+		this.getAllCollectionData()
 	}
 
 	render() {
@@ -77,7 +77,7 @@ export default class Collection extends Component {
 							/>
 							<input
 								type='submit'
-								value='Create Collection'
+								value='Edit this Collection'
 								className='ui button'
 							/>
 						</form>
