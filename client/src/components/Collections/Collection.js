@@ -121,7 +121,7 @@ export default class Collection extends Component {
 								</div>
 								<div className='column'>
 									<div className='ui container'>
-										<h3>{this.state.collection.name}</h3>
+										<h3>My Pictures</h3>
 										<Pictures
 											getAllPictureData={this.getAllPictureData}
 											pictures={this.state.pictures}
