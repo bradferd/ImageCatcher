@@ -32,7 +32,13 @@ export default class Collections extends Component {
 		})
 		return (
 			<div className='ui container'>
-				<div className='ui divided list'>{collectionsList}</div>
+				<div className='ui segment vertical masthead'>
+					<h1>All Collections</h1>
+					<h3>Browse Collections or make your own!</h3>
+				</div>
+				<div className='ui segment'>
+					<div className='ui divided list'>{collectionsList}</div>
+				</div>
 			</div>
 		)
 	}
