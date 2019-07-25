@@ -96,7 +96,10 @@ export default class Collection extends Component {
 					</div>
 				) : (
 					<div>
-						<div className='ui container masthead center aligned'>
+						<div
+							className='ui vertical inverted masthead center aligned segment'
+							style={{ marginBottom: '0' }}
+						>
 							<h1>{this.state.collection.name}</h1>
 							<p>{this.state.collection.description}</p>
 							<button onClick={this.handleDeleteCollection}>
@@ -106,7 +109,7 @@ export default class Collection extends Component {
 								Edit Collection
 							</button>
 						</div>
-						<div className='ui segment'>
+						<div className='ui segment' style={{ marginTop: '0' }}>
 							<div className='ui two column very relaxed grid'>
 								<div className='column'>
 									<div className='ui container'>
