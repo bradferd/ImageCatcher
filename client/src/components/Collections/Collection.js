@@ -127,7 +127,7 @@ export default class Collection extends Component {
 									</div>
 								</div>
 								<div className='column'>
-									<div className='ui container'>
+									<div className='ui container center aligned'>
 										<h3>My Pictures</h3>
 										<Pictures
 											getAllPictureData={this.getAllPictureData}
