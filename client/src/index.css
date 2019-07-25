@@ -3,7 +3,7 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: #f6f7eb;
+	background-color: #e6e8e6;
 }
 
 .App {
@@ -11,13 +11,17 @@ body {
 }
 
 .ui.masthead.segment {
-	background-color: #606366;
+	background-color: #56595b;
 }
 
 .ui.button.primary {
-	background-color: #45e0d3;
+	background-color: #3abcb1;
 }
 
 .ui.secondary.pointing.menu {
 	background-color: #272727;
+}
+
+.ui.column.grid {
+	background-color: #e6e8e6;
 }

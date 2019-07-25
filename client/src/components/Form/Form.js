@@ -42,7 +42,7 @@ export default class Form extends Component {
 									placeholder='Enter a name for this collection...'
 									name='name'
 									value={this.state.newCollection.name}
-									autocomplete='off'
+									autoComplete='off'
 								/>
 							</div>
 							<div className='field'>
@@ -61,7 +61,7 @@ export default class Form extends Component {
 							<input
 								type='submit'
 								value='Create Collection'
-								className='ui button'
+								className='ui button primary'
 							/>
 						</form>
 					</div>

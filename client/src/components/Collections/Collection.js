@@ -103,13 +103,13 @@ export default class Collection extends Component {
 							<h1>{this.state.collection.name}</h1>
 							<p>{this.state.collection.description}</p>
 							<button
-								className='mini ui button'
+								className='mini ui button primary'
 								onClick={this.handleDeleteCollection}
 							>
 								Delete Collection
 							</button>
 							<button
-								className='mini ui button'
+								className='mini ui button primary'
 								onClick={this.handleToggleEditForm}
 							>
 								Edit Collection

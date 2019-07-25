@@ -37,12 +37,18 @@ class ImageCard extends React.Component {
 
 		return (
 			<div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-				<img ref={this.imageRef} alt={description} src={urls.regular} />
+				<img
+					className='ui rounded image'
+					style={{ marginBottom: '2px' }}
+					ref={this.imageRef}
+					alt={description}
+					src={urls.regular}
+				/>
 				<button
-					className='ui labeled icon button'
+					className='ui labeled icon button primary'
 					onClick={this.addToCollection}
 				>
-					<i class='plus icon' />
+					<i className='plus icon' />
 					Add to Collection
 				</button>
 			</div>
