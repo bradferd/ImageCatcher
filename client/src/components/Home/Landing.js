@@ -5,11 +5,12 @@ export default class Landing extends Component {
 		return (
 			<div className='pusher'>
 				<div
+					id='splash'
 					className='ui vertical inverted masthead center aligned segment'
 					style={{ paddingTop: '125px', paddingBottom: '125px' }}
 				>
 					<div className='ui text container'>
-						<h1 className='ui inverted header'>ImageSearch</h1>
+						<h1 className='ui inverted header'>ImageCatcher</h1>
 						<h2>Changing the world with some pictures</h2>
 						<div className='ui huge primary button'>
 							Get Started

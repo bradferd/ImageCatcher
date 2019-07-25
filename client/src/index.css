@@ -10,7 +10,11 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
-.ui.masthead.segment {
+#splash {
+	background-image: url('https://images.unsplash.com/photo-1516946870798-f970a32afc8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1800&h=500&q=80');
+}
+
+#collectionHeader {
 	background-color: #56595b;
 }
 
@@ -18,10 +22,18 @@ body {
 	background-color: #3abcb1;
 }
 
+.ui.button.primary:hover {
+	background-color: #2d938b;
+}
+
 .ui.secondary.pointing.menu {
 	background-color: #272727;
 }
 
 .ui.column.grid {
+	background-color: #e6e8e6;
+}
+
+.ui.vertical.stripe.segment {
 	background-color: #e6e8e6;
 }

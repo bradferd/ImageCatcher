@@ -97,6 +97,7 @@ export default class Collection extends Component {
 				) : (
 					<div>
 						<div
+							id='collectionHeader'
 							className='ui vertical inverted masthead center aligned segment'
 							style={{ marginBottom: '0' }}
 						>
