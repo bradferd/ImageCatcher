@@ -3,8 +3,21 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #f6f7eb;
 }
 
 .App {
 	font-family: 'Josefin Sans', sans-serif;
+}
+
+.ui.masthead.segment {
+	background-color: #606366;
+}
+
+.ui.button.primary {
+	background-color: #45e0d3;
+}
+
+.ui.secondary.pointing.menu {
+	background-color: #272727;
 }

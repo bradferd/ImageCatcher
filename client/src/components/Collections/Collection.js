@@ -102,10 +102,16 @@ export default class Collection extends Component {
 						>
 							<h1>{this.state.collection.name}</h1>
 							<p>{this.state.collection.description}</p>
-							<button onClick={this.handleDeleteCollection}>
+							<button
+								className='mini ui button'
+								onClick={this.handleDeleteCollection}
+							>
 								Delete Collection
 							</button>
-							<button onClick={this.handleToggleEditForm}>
+							<button
+								className='mini ui button'
+								onClick={this.handleToggleEditForm}
+							>
 								Edit Collection
 							</button>
 						</div>
