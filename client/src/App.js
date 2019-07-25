@@ -8,6 +8,7 @@ import Collection from './components/Collections/Collection'
 import Home from './components/Home/Landing'
 import PictureShow from './components/Pictures/PictureShow'
 import CollectionDelete from './components/Collections/CollectionDelete'
+import PictureDelete from './components/Pictures/DeletePicture'
 
 function App() {
 	return (
@@ -21,6 +22,10 @@ function App() {
 					<Route
 						path='/collections/:collectionId/delete'
 						component={CollectionDelete}
+					/>
+					<Route
+						path='/collections/:collectionId/pics/:pictureId/delete'
+						component={PictureDelete}
 					/>
 					<Route
 						path='/collections/:collectionId/pics/:pictureId'

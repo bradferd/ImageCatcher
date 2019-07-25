@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
 import { Link } from 'react-router-dom'
 
 export default class Picture extends Component {
-	handleDeleteImage = async () => {
-		await Axios.delete(
-			`/api/collections/${this.props.collectionId}/pics/${this.props.id}`
-		)
-		this.props.getAllPictureData()
-	}
 	render() {
 		return (
 			<div className='column'>
@@ -21,13 +14,15 @@ export default class Picture extends Component {
 						alt={this.props.description}
 					/>
 				</Link>
-				<button
+				<Link
 					className='circular ui icon button'
-					onClick={this.handleDeleteImage}
+					to={`/collections/${this.props.collectionId}/pics/${
+						this.props.id
+					}/delete`}
 					style={{ marginTop: '2px', marginBottom: '2px' }}
 				>
 					<i className='trash alternate icon' />
-				</button>
+				</Link>
 			</div>
 		)
 	}
