@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import PhotoSearch from '../ImageSearch/PhotoSearch'
 import Pictures from '../Pictures/Pictures'
 
@@ -8,7 +8,6 @@ export default class Collection extends Component {
 	state = {
 		collection: [],
 		pictures: [],
-		redirectToCollections: false,
 		showEditForm: false
 	}
 
@@ -29,12 +28,6 @@ export default class Collection extends Component {
 			`/api/collections/${this.props.match.params.collectionId}/pics`
 		)
 		this.setState({ pictures: res.data })
-	}
-
-	handleDeleteCollection = () => {
-		axios
-			.delete(`/api/collections/${this.state.collection._id}`)
-			.then(() => this.setState({ redirectToCollections: true }))
 	}
 
 	handleToggleEditForm = () => {
@@ -58,9 +51,6 @@ export default class Collection extends Component {
 	}
 
 	render() {
-		if (this.state.redirectToCollections) {
-			return <Redirect to='/collections' />
-		}
 		return (
 			<div>
 				{this.state.showEditForm ? (
@@ -101,12 +91,12 @@ export default class Collection extends Component {
 						>
 							<h1>{this.state.collection.name}</h1>
 							<p>{this.state.collection.description}</p>
-							<button
+							<Link
+								to={`/collections/${this.state.collection._id}/delete`}
 								className='mini ui button primary'
-								onClick={this.handleDeleteCollection}
 							>
 								Delete Collection
-							</button>
+							</Link>
 							<button
 								className='mini ui button primary'
 								onClick={this.handleToggleEditForm}
