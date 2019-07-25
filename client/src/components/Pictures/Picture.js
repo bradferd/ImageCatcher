@@ -17,7 +17,13 @@ export default class Picture extends Component {
 					alt={this.props.description}
 				/>
 
-				<button onClick={this.handleDeleteImage}>Delete Image</button>
+				<button
+					className='circular ui icon button left floated'
+					onClick={this.handleDeleteImage}
+					style={{ marginTop: '2px', marginBottom: '2px' }}
+				>
+					<i className='trash alternate icon' />
+				</button>
 			</div>
 		)
 	}
