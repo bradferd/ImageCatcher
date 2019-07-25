@@ -119,7 +119,7 @@ export default class Collection extends Component {
 						<div className='ui segment' style={{ marginTop: '0' }}>
 							<div className='ui two column very relaxed grid'>
 								<div className='column'>
-									<div className='ui container'>
+									<div className='ui container center aligned'>
 										<PhotoSearch
 											getAllPictureData={this.getAllPictureData}
 											{...this.props}

@@ -14,16 +14,19 @@ export default class SearchBar extends Component {
 
 	render() {
 		return (
-			<div className='ui segment'>
-				<form onSubmit={this.onFormSubmit} className='ui form'>
-					<div className='field'>
-						<label>Image Search</label>
-						<input
-							type='text'
-							value={this.state.term}
-							onChange={e => this.setState({ term: e.target.value })}
-						/>
-					</div>
+			<div
+				className='ui center aligned category search'
+				style={{ marginBottom: '5px' }}
+			>
+				<form onSubmit={this.onFormSubmit} className='ui icon input'>
+					<i class='search icon' />
+					<input
+						className='prompt'
+						placeholder='search photos...'
+						type='text'
+						value={this.state.term}
+						onChange={e => this.setState({ term: e.target.value })}
+					/>
 				</form>
 			</div>
 		)
