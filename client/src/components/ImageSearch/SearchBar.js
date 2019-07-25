@@ -19,7 +19,7 @@ export default class SearchBar extends Component {
 				style={{ marginBottom: '5px' }}
 			>
 				<form onSubmit={this.onFormSubmit} className='ui icon input'>
-					<i class='search icon' />
+					<i className='search icon' />
 					<input
 						className='prompt'
 						placeholder='search photos...'

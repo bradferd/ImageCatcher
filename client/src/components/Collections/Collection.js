@@ -18,11 +18,9 @@ export default class Collection extends Component {
 	}
 
 	getAllCollectionData = async () => {
-		console.log('getAll-Collection called')
 		const res = await axios.get(
 			`/api/collections/${this.props.match.params.collectionId}`
 		)
-		console.log(res)
 		this.setState({ collection: res.data })
 	}
 
