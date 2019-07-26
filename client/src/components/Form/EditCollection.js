@@ -44,6 +44,7 @@ export default class EditCollection extends Component {
 					handleInputChange={this.handleInputChange}
 					name={this.state.collection.name}
 					description={this.state.collection.description}
+					inputValue='Edit Collection'
 				/>
 			</div>
 		)

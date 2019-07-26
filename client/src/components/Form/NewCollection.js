@@ -35,6 +35,7 @@ export default class NewCollection extends Component {
 					handleInputChange={this.handleInputChange}
 					name={this.state.newCollection.name}
 					description={this.state.newCollection.description}
+					inputValue='Create Collection'
 				/>
 			</div>
 		)

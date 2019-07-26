@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 export default class Form extends Component {
-	componentDidMount() {
-		console.log(this.props)
-	}
 	render() {
 		return (
 			<div className='ui container' style={{ marginTop: '30px' }}>
@@ -37,7 +34,7 @@ export default class Form extends Component {
 							</div>
 							<input
 								type='submit'
-								value='Create Collection'
+								value={this.props.inputValue}
 								className='ui button primary'
 							/>
 						</form>
