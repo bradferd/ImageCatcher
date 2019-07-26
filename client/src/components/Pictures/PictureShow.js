@@ -18,13 +18,11 @@ export default class PictureShow extends Component {
 
 	renderContent() {
 		return (
-			<div className='ui grid center aligned'>
-				<img
-					src={this.state.picture.imgSrc}
-					alt={this.state.picture.description}
-					style={{ width: '500px' }}
-				/>
-			</div>
+			<img
+				src={this.state.picture.imgSrc}
+				alt={this.state.picture.description}
+				className='ui fluid image'
+			/>
 		)
 	}
 	render() {
@@ -32,7 +30,6 @@ export default class PictureShow extends Component {
 			<div>
 				<Modal
 					content={this.renderContent()}
-					title={this.state.picture.description}
 					onDismiss={() =>
 						this.props.history.push(
 							`/collections/${this.state.picture.collectionId}`

@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PhotoSearch from './components/ImageSearch/PhotoSearch.js'
 import Navbar from './components/Navbar'
-import Form from './components/Form/Form'
+import NewCollection from './components/Form/NewCollection'
 import Collections from './components/Collections/Collections'
 import Collection from './components/Collections/Collection'
 import Home from './components/Home/Landing'
@@ -31,7 +31,7 @@ function App() {
 						path='/collections/:collectionId/pics/:pictureId'
 						component={PictureShow}
 					/>
-					<Route path='/collections/new' component={Form} />
+					<Route path='/collections/new' component={NewCollection} />
 					<Route path='/collections/:collectionId' component={Collection} />
 				</Switch>
 			</Router>
