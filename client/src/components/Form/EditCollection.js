@@ -5,7 +5,10 @@ import axios from 'axios'
 
 export default class EditCollection extends Component {
 	state = {
-		collection: [],
+		collection: {
+			name: '',
+			description: ''
+		},
 		redirectToCollection: false
 	}
 

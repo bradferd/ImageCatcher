@@ -11,7 +11,7 @@ export default class Landing extends Component {
 				>
 					<div className='ui text container'>
 						<h1 className='ui inverted header'>ImageCatcher</h1>
-						<h2>Changing the world with some pictures</h2>
+						<h2>All your images, in one place</h2>
 						<div className='ui huge primary button'>
 							Get Started
 							<i className='right arrow icon' />
