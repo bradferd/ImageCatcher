@@ -9,6 +9,7 @@ import Home from './components/Home/Landing'
 import PictureShow from './components/Pictures/PictureShow'
 import CollectionDelete from './components/Collections/CollectionDelete'
 import PictureDelete from './components/Pictures/DeletePicture'
+import EditCollection from './components/Form/EditCollection'
 
 function App() {
 	return (
@@ -19,6 +20,10 @@ function App() {
 					<Route exact path='/' component={Home} />
 					<Route path='/photos' component={PhotoSearch} />
 					<Route exact path='/collections' component={Collections} />
+					<Route
+						path='/collections/:collectionId/edit'
+						component={EditCollection}
+					/>
 					<Route
 						path='/collections/:collectionId/delete'
 						component={CollectionDelete}
