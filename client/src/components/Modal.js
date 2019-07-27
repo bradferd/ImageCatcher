@@ -8,9 +8,9 @@ const Modal = props => {
 				onClick={e => e.stopPropagation()}
 				className='ui standard modal visible active'
 			>
-				{props.title ? <div className='header'>props.title</div> : null}
+				{props.title ? <div className='header'>{props.title}</div> : null}
 				<div className='content'>{props.content}</div>
-				{props.actions ? <div className='actions'>props.actions</div> : null}
+				{props.actions ? <div className='actions'>{props.actions}</div> : null}
 			</div>
 		</div>,
 		document.querySelector('#modal')
