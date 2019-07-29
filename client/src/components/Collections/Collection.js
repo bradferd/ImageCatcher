@@ -7,7 +7,8 @@ import Pictures from '../Pictures/Pictures'
 export default class Collection extends Component {
 	state = {
 		collection: [],
-		pictures: []
+		pictures: [],
+		showSearchBar: false
 	}
 
 	componentDidMount() {
@@ -27,6 +28,12 @@ export default class Collection extends Component {
 			`/api/collections/${this.props.match.params.collectionId}/pics`
 		)
 		this.setState({ pictures: res.data })
+	}
+
+	handleShowSearchBar = () => {
+		this.setState(state => {
+			return { showSearchBar: !state.showSearchBar }
+		})
 	}
 
 	render() {
@@ -52,17 +59,45 @@ export default class Collection extends Component {
 						>
 							Edit Collection
 						</Link>
+						{this.state.showSearchBar ? (
+							<button
+								className='mini ui button primary'
+								onClick={this.handleShowSearchBar}
+							>
+								Hide Search
+							</button>
+						) : (
+							<button
+								className='mini ui button primary'
+								onClick={this.handleShowSearchBar}
+							>
+								Add pictures
+							</button>
+						)}
 					</div>
 					<div className='ui segment' style={{ marginTop: '0' }}>
-						<div className='ui two column very relaxed grid'>
-							<div className='column'>
-								<div className='ui container center aligned'>
-									<PhotoSearch
-										getAllPictureData={this.getAllPictureData}
-										{...this.props}
-									/>
+						{this.state.showSearchBar ? (
+							<div className='ui two column very relaxed grid'>
+								<div className='column'>
+									<div className='ui container center aligned'>
+										<PhotoSearch
+											getAllPictureData={this.getAllPictureData}
+											{...this.props}
+										/>
+									</div>
+								</div>
+								<div className='column'>
+									<div className='ui container center aligned'>
+										<h3>My Pictures</h3>
+										<Pictures
+											getAllPictureData={this.getAllPictureData}
+											pictures={this.state.pictures}
+											{...this.props}
+										/>
+									</div>
 								</div>
 							</div>
+						) : (
 							<div className='column'>
 								<div className='ui container center aligned'>
 									<h3>My Pictures</h3>
@@ -73,7 +108,7 @@ export default class Collection extends Component {
 									/>
 								</div>
 							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			</div>
