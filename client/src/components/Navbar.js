@@ -25,7 +25,7 @@ export default class Navbar extends Component {
 				style={{ marginBottom: '0' }}
 			>
 				<Link to='/' className='item'>
-					ImageCatcher
+					<i className='camera retro inverted icon' /> ImageCatcher
 				</Link>
 				<div className='right menu'>
 					<Link to='/collections/new' className='item'>

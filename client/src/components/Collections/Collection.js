@@ -75,7 +75,11 @@ export default class Collection extends Component {
 							</button>
 						)}
 					</div>
-					<div className='ui segment' style={{ marginTop: '0' }}>
+					<div
+						className='ui segment'
+						id='collectionLarge'
+						style={{ marginTop: '0' }}
+					>
 						{this.state.showSearchBar ? (
 							<div className='ui two column very relaxed grid'>
 								<div className='column'>
