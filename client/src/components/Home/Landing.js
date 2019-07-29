@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Landing extends Component {
 	render() {
@@ -12,10 +13,10 @@ export default class Landing extends Component {
 					<div className='ui text container'>
 						<h1 className='ui inverted header'>ImageCatcher</h1>
 						<h2>All your images, in one place</h2>
-						<div className='ui huge primary button'>
+						<Link to='/collections/new' className='ui huge primary button'>
 							Get Started
 							<i className='right arrow icon' />
-						</div>
+						</Link>
 					</div>
 				</div>
 				<div className='ui vertical stripe segment'>
