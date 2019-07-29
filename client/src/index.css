@@ -26,7 +26,10 @@ body {
 	background-color: #3abcb1;
 }
 
-.ui.button.primary:hover {
+.ui.button.primary:hover,
+.ui.button.primary:link,
+.ui.button.primary:active,
+.ui.button.primary:focus {
 	background-color: #2d938b;
 }
 
