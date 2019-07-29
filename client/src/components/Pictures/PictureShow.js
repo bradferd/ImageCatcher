@@ -21,7 +21,7 @@ export default class PictureShow extends Component {
 			<img
 				src={this.state.picture.imgSrc}
 				alt={this.state.picture.description}
-				className='ui fluid image'
+				className='ui fluid image centered'
 			/>
 		)
 	}

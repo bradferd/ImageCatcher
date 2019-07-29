@@ -24,20 +24,20 @@ Hosted Heroku Link - https://image-catch.herokuapp.com/
 
 ### Search Page
 
-![alt text](./readmeImages/Search.png 'Search Page Wireframe')
+![alt text](./readMeImages/Search.png 'Search Page Wireframe')
 
 ### Collection Page
 
-![alt text](./readmeImages/Collection.png 'Collection Page Wireframe')
+![alt text](./readMeImages/Collection.png 'Collection Page Wireframe')
 
 ### Form Component
 
-![alt text](./readmeImages/Form.png 'Form Page Wireframe')
+![alt text](./readMeImages/Form.png 'Form Page Wireframe')
 
 ### Modal Component
 
-![alt text](./readmeImages/Modal.png 'Modal Page Wireframe')
+![alt text](./readMeImages/Modal.png 'Modal Page Wireframe')
 
 ## ERD
 
-![alt text](./readmeImages/ERD.png 'ERD for project')
+![alt text](./readMeImages/ERD.png 'ERD for project')
