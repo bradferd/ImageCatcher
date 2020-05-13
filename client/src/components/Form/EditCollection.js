@@ -1,55 +1,48 @@
-import React, { Component } from 'react'
-import Form from './Form'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import React, { useReducer, useState, useEffect } from "react";
+import Form from "./Form";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
-export default class EditCollection extends Component {
-	state = {
-		collection: {
-			name: '',
-			description: ''
-		},
-		redirectToCollection: false
-	}
+const EditCollection = ({ match }) => {
+  const [collection, setCollection] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    { name: "", description: "" }
+  );
+  const [redirect, setRedirect] = useState(false);
+  const url = `/api/collections/${match.params.collectionId}`;
+  
+  useEffect(() => {
+	  axios.get(url)
+	  .then(res => setCollection(res.data))
+  })
 
-	async componentDidMount() {
-		const res = await axios.get(
-			`/api/collections/${this.props.match.params.collectionId}`
-		)
-		this.setState({ collection: res.data })
-	}
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCollection({ [name]: value });
+  };
 
-	handleInputChange = e => {
-		const copyCollection = { ...this.state.collection }
-		copyCollection[e.target.name] = e.target.value
-		this.setState({ collection: copyCollection })
-	}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(url, collection);
+    setRedirect(true);
+  };
 
-	handleSubmit = async e => {
-		e.preventDefault()
-		const res = await axios.put(
-			`/api/collections/${this.state.collection._id}`,
-			this.state.collection
-		)
-		this.setState({ collection: res.data, redirectToCollection: true })
-	}
+  if (redirect) {
+    return (
+      <Redirect to={`/collections/${match.params.collectionId}`} />
+    );
+  }
+  return (
+    <div>
+      <Form
+        handleSubmit={handleSubmit}
+        handleInputChange={handleInputChange}
+        name={collection.name}
+        description={collection.description}
+        inputValue="Edit Collection"
+      />
+    </div>
+  );
+};
 
-	render() {
-		if (this.state.redirectToCollection) {
-			return (
-				<Redirect to={`/collections/${this.props.match.params.collectionId}`} />
-			)
-		}
-		return (
-			<div>
-				<Form
-					handleSubmit={this.handleSubmit}
-					handleInputChange={this.handleInputChange}
-					name={this.state.collection.name}
-					description={this.state.collection.description}
-					inputValue='Edit Collection'
-				/>
-			</div>
-		)
-	}
-}
+export default EditCollection
