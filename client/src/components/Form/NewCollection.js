@@ -1,43 +1,38 @@
-import React, { Component } from 'react'
-import Form from './Form'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import React, { useState, useReducer } from "react";
+import Form from "./Form";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
-export default class NewCollection extends Component {
-	state = {
-		newCollection: {
-			name: '',
-			description: ''
-		},
-		redirectToCollections: false
-	}
+const NewCollection = (props) => {
+  const [newCollection, setNewCollection] = useReducer(
+	  (state, newState) => ({ ...state, ...newState}),
+	  { name: "", description: "" });
+  const [redirectToCollections, setRedirectToCollections] = useState(false);
 
-	handleInputChange = e => {
-		const copyCollection = { ...this.state.newCollection }
-		copyCollection[e.target.name] = e.target.value
-		this.setState({ newCollection: copyCollection })
-	}
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewCollection({ [name] : value });
+  };
 
-	handleSubmit = e => {
-		e.preventDefault()
-		axios.post(`/api/collections`, this.state.newCollection)
-		this.setState({ redirectToCollections: true })
-	}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`/api/collections`, newCollection);
+    setRedirectToCollections(true);
+  };
 
-	render() {
-		if (this.state.redirectToCollections) {
-			return <Redirect to='/collections' />
-		}
-		return (
-			<div>
-				<Form
-					handleSubmit={this.handleSubmit}
-					handleInputChange={this.handleInputChange}
-					name={this.state.newCollection.name}
-					description={this.state.newCollection.description}
-					inputValue='Create Collection'
-				/>
-			</div>
-		)
-	}
-}
+  return redirectToCollections ? (
+    <Redirect to="/collections" />
+  ) : (
+    <div>
+      <Form
+        handleSubmit={handleSubmit}
+        handleInputChange={handleInputChange}
+        name={newCollection.name}
+        description={newCollection.description}
+        inputValue="Create Collection"
+      />
+    </div>
+  );
+};
+
+export default NewCollection;
