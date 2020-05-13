@@ -1,59 +1,51 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
-class ImageCard extends React.Component {
-	constructor(props) {
-		super(props)
+const ImageCard = ({ image, match, getAllPictureData }) => {
+  const [spans, setSpans] = useState(0);
+  const imageRef = useRef(null);
 
-		this.state = { spans: 0 }
+  const url = `/api/collections/${match.params.collectionId}/pics`;
 
-		this.imageRef = React.createRef()
-	}
+  useEffect(() => {
+    imageRef.current.addEventListener("load", makeSpans);
+  }, [spans]);
 
-	componentDidMount() {
-		this.imageRef.current.addEventListener('load', this.setSpans)
-	}
+  const makeSpans = () => {
+    const height = imageRef.current.clientHeight;
+    const spans = Math.ceil(height / 10);
+    setSpans(spans);
+  };
 
-	setSpans = () => {
-		const height = this.imageRef.current.clientHeight
+  const addToCollection = async () => {
+    await axios.post(url, {
+      description: image.alt_description,
+      imgSrc: image.urls.regular,
+      collectionId: match.params.collectionId,
+    });
+    getAllPictureData();
+  };
 
-		const spans = Math.ceil(height / 10)
+  const { description, urls } = image;
 
-		this.setState({ spans })
-	}
+  return (
+    <div style={{ gridRowEnd: `span ${spans}` }}>
+      <img
+        className="ui rounded image"
+        style={{ marginBottom: "2px" }}
+        ref={imageRef}
+        alt={description}
+        src={urls.regular}
+      />
+      <button
+        className="ui labeled icon button primary"
+        onClick={addToCollection}
+      >
+        <i className="plus icon" />
+        Add to Collection
+      </button>
+    </div>
+  );
+};
 
-	addToCollection = async () => {
-		await axios.post('/api/collections/:collectionId/pics', {
-			description: this.props.image.alt_description,
-			imgSrc: this.props.image.urls.regular,
-			collectionId: this.props.match.params.collectionId
-		})
-		console.log(this.props)
-		this.props.getAllPictureData()
-	}
-
-	render() {
-		const { description, urls } = this.props.image
-
-		return (
-			<div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-				<img
-					className='ui rounded image'
-					style={{ marginBottom: '2px' }}
-					ref={this.imageRef}
-					alt={description}
-					src={urls.regular}
-				/>
-				<button
-					className='ui labeled icon button primary'
-					onClick={this.addToCollection}
-				>
-					<i className='plus icon' />
-					Add to Collection
-				</button>
-			</div>
-		)
-	}
-}
-
-export default ImageCard
+export default ImageCard;

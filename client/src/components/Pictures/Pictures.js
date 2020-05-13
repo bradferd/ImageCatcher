@@ -1,25 +1,33 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Picture from './Picture'
+import Axios from 'axios';
 
-export default class Pictures extends Component {
-	render() {
-		let pictures = this.props.pictures.map(pic => {
-			return (
-				<Picture
-					description={pic.description}
-					src={pic.imgSrc}
-					collectionId={pic.collectionId}
-					getAll={this.getAll}
-					id={pic._id}
-					key={pic._id}
-					getAllPictureData={this.props.getAllPictureData}
-				/>
-			)
-		})
+const Pictures = ({ collectionId }) => {
+	const [pictures, setPictures] = useState([]);
+	const url = `/api/collections/${collectionId}/pics`
+
+	useEffect(() => {
+		Axios.get(url)
+		.then(res => setPictures(res.data))
+	}, [url])
+
+
+	const allPictures = pictures.map(pic => {
 		return (
-			<div className='ui grid'>
-				<div className='three column row'>{pictures}</div>
-			</div>
+			<Picture
+				description={pic.description}
+				src={pic.imgSrc}
+				collectionId={pic.collectionId}
+				id={pic._id}
+				key={pic._id}
+			/>
 		)
-	}
+	})
+	return (
+		<div className='ui grid'>
+			<div className='three column row'>{allPictures}</div>
+		</div>
+	)
 }
+
+export default Pictures

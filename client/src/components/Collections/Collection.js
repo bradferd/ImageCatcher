@@ -1,121 +1,96 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import PhotoSearch from '../ImageSearch/PhotoSearch'
-import Pictures from '../Pictures/Pictures'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import PhotoSearch from "../ImageSearch/PhotoSearch";
+import Pictures from "../Pictures/Pictures";
 
-export default class Collection extends Component {
-	state = {
-		collection: [],
-		pictures: [],
-		showSearchBar: false
-	}
+const Collection = (props) => {
+  const [showSearch, setShowSearch] = useState(false);
+  const [collection, setCollection] = useState([]);
 
-	componentDidMount() {
-		this.getAllCollectionData()
-		this.getAllPictureData()
-	}
+  const url = `/api/collections/${props.match.params.collectionId}`;
 
-	getAllCollectionData = async () => {
-		const res = await axios.get(
-			`/api/collections/${this.props.match.params.collectionId}`
-		)
-		this.setState({ collection: res.data })
-	}
+  useEffect(() => {
+    axios.get(url).then((res) => setCollection(res.data));
+  }, [url]);
 
-	getAllPictureData = async () => {
-		const res = await axios.get(
-			`/api/collections/${this.props.match.params.collectionId}/pics`
-		)
-		this.setState({ pictures: res.data })
-	}
+  const getAllPictureData = async () => {
+	  let pictures = await axios.get(`${url}/pics`)
+	  return pictures.data
+  };
 
-	handleShowSearchBar = () => {
-		this.setState(state => {
-			return { showSearchBar: !state.showSearchBar }
-		})
-	}
+  return (
+    <div>
+      <div>
+        <div
+          id="collectionHeader"
+          className="ui vertical inverted masthead center aligned segment"
+          style={{ marginBottom: "0" }}
+        >
+          <h1>{collection.name}</h1>
+          <p>{collection.description}</p>
+          <Link
+            to={`/collections/${props.match.params.collectionId}/delete`}
+            className="mini ui button primary"
+          >
+            Delete Collection
+          </Link>
+          <Link
+            to={`/collections/${props.match.params.collectionId}/edit`}
+            className="mini ui button primary"
+          >
+            Edit Collection
+          </Link>
+          {showSearch ? (
+            <button
+              className="mini ui button primary"
+              onClick={() => setShowSearch(!showSearch)}
+            >
+              Hide Search
+            </button>
+          ) : (
+            <button
+              className="mini ui button primary"
+              onClick={() => setShowSearch(!showSearch)}
+            >
+              Add pictures
+            </button>
+          )}
+        </div>
+        <div
+          className="ui segment"
+          id="collectionLarge"
+          style={{ marginTop: "0" }}
+        >
+          {showSearch ? (
+            <div className="ui two column very relaxed grid">
+              <div className="column">
+                <div className="ui container center aligned">
+                  <PhotoSearch
+                    getAllPictureData={getAllPictureData}
+                    {...props}
+                  />
+                </div>
+              </div>
+              <div className="column">
+                <div className="ui container center aligned">
+                  <h3>My Pictures</h3>
+                  <Pictures />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="column">
+              <div className="ui container center aligned">
+                <h3>My Pictures</h3>
+                <Pictures collectionId={props.match.params.collectionId} />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-	render() {
-		return (
-			<div>
-				<div>
-					<div
-						id='collectionHeader'
-						className='ui vertical inverted masthead center aligned segment'
-						style={{ marginBottom: '0' }}
-					>
-						<h1>{this.state.collection.name}</h1>
-						<p>{this.state.collection.description}</p>
-						<Link
-							to={`/collections/${this.state.collection._id}/delete`}
-							className='mini ui button primary'
-						>
-							Delete Collection
-						</Link>
-						<Link
-							to={`/collections/${this.state.collection._id}/edit`}
-							className='mini ui button primary'
-						>
-							Edit Collection
-						</Link>
-						{this.state.showSearchBar ? (
-							<button
-								className='mini ui button primary'
-								onClick={this.handleShowSearchBar}
-							>
-								Hide Search
-							</button>
-						) : (
-							<button
-								className='mini ui button primary'
-								onClick={this.handleShowSearchBar}
-							>
-								Add pictures
-							</button>
-						)}
-					</div>
-					<div
-						className='ui segment'
-						id='collectionLarge'
-						style={{ marginTop: '0' }}
-					>
-						{this.state.showSearchBar ? (
-							<div className='ui two column very relaxed grid'>
-								<div className='column'>
-									<div className='ui container center aligned'>
-										<PhotoSearch
-											getAllPictureData={this.getAllPictureData}
-											{...this.props}
-										/>
-									</div>
-								</div>
-								<div className='column'>
-									<div className='ui container center aligned'>
-										<h3>My Pictures</h3>
-										<Pictures
-											getAllPictureData={this.getAllPictureData}
-											pictures={this.state.pictures}
-											{...this.props}
-										/>
-									</div>
-								</div>
-							</div>
-						) : (
-							<div className='column'>
-								<div className='ui container center aligned'>
-									<h3>My Pictures</h3>
-									<Pictures
-										getAllPictureData={this.getAllPictureData}
-										pictures={this.state.pictures}
-										{...this.props}
-									/>
-								</div>
-							</div>
-						)}
-					</div>
-				</div>
-			</div>
-		)
-	}
-}
+export default Collection;

@@ -14,7 +14,7 @@ const EditCollection = ({ match }) => {
   useEffect(() => {
 	  axios.get(url)
 	  .then(res => setCollection(res.data))
-  })
+  }, [url])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
