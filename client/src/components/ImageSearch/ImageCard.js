@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import Modal from "../Modal";
 
 const ImageCard = ({ image, match, getAllPictureData }) => {
   const [spans, setSpans] = useState(0);
@@ -32,10 +33,26 @@ const ImageCard = ({ image, match, getAllPictureData }) => {
     <div style={{ gridRowEnd: `span ${spans}` }}>
       <img
         className="ui rounded image"
-        style={{ marginBottom: "2px" }}
         ref={imageRef}
         alt={description}
         src={urls.regular}
+        onClick={() => {
+          return (
+            <div>
+              <Modal
+                content={() => {
+                  return (
+                    <img 
+                      src={urls.regular}
+                      alt={description}
+                      ref={imageRef}
+                    />
+                  )
+                }}
+              />
+            </div>
+          )
+        }}
       />
       <button
         className="ui labeled icon button primary"

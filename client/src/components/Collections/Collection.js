@@ -75,7 +75,7 @@ const Collection = (props) => {
               <div className="column">
                 <div className="ui container center aligned">
                   <h3>My Pictures</h3>
-                  <Pictures />
+                  <Pictures collectionId={props.match.params.collectionId} />
                 </div>
               </div>
             </div>

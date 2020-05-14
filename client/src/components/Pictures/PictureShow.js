@@ -1,42 +1,39 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from '../Modal'
 import axios from 'axios'
 
-export default class PictureShow extends Component {
-	state = {
-		picture: {}
-	}
+const PictureShow = ({ match, history }) => {
+	const [picture, setPicture] = useState({})
+	const url = `/api/collections/${match.params.collectionId}/pics/
+		${match.params.pictureId}`;
 
-	async componentDidMount() {
-		const res = await axios.get(
-			`/api/collections/${this.props.match.params.collectionId}/pics/${
-				this.props.match.params.pictureId
-			}`
-		)
-		this.setState({ picture: res.data })
-	}
+	useEffect(() => {
+		axios.get(url)
+		.then(res => setPicture(res.data))
+	}, [url])
 
-	renderContent() {
+	const renderContent = () => {
 		return (
 			<img
-				src={this.state.picture.imgSrc}
-				alt={this.state.picture.description}
+				src={picture.imgSrc}
+				alt={picture.description}
 				className='ui fluid image centered'
 			/>
 		)
 	}
-	render() {
-		return (
-			<div>
-				<Modal
-					content={this.renderContent()}
-					onDismiss={() =>
-						this.props.history.push(
-							`/collections/${this.state.picture.collectionId}`
-						)
-					}
-				/>
-			</div>
-		)
-	}
+
+	return (
+		<div>
+			<Modal
+				content={renderContent()}
+				onDismiss={() =>
+					history.push(
+						`/collections/${picture.collectionId}`
+					)
+				}
+			/>
+		</div>
+	)
 }
+
+export default PictureShow

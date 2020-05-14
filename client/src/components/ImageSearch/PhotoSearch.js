@@ -1,26 +1,28 @@
-import React, { Component } from 'react'
-import SearchBar from './SearchBar'
-import ImageList from './ImageList'
-import Axios from 'axios'
+import React, { useState } from "react";
+import SearchBar from "./SearchBar";
+import ImageList from "./ImageList";
+import Axios from "axios";
 
-export default class PhotoSearch extends Component {
-	state = { images: [] }
+const PhotoSearch = (props) => {
+  const [images, setImages] = useState([]);
 
-	onSearchSubmit = async term => {
-		const response = await Axios.get('/api/search', { params: { query: term } })
-		this.setState({ images: response.data.results })
-	}
+  const onSearchSubmit = async (term) => {
+    const response = await Axios.get("/api/search", {
+      params: { query: term },
+    });
+    setImages(response.data.results);
+  };
 
-	render() {
-		return (
-			<div className='ui container' style={{ marginTop: '10px' }}>
-				<SearchBar onSearchSubmit={this.onSearchSubmit} />
-				<ImageList
-					{...this.props}
-					getAllPictureData={this.props.getAllPictureData}
-					images={this.state.images}
-				/>
-			</div>
-		)
-	}
-}
+  return (
+    <div className="ui container" style={{ marginTop: "10px" }}>
+      <SearchBar onSearchSubmit={onSearchSubmit} />
+      <ImageList
+        {...props}
+        getAllPictureData={props.getAllPictureData}
+        images={images}
+      />
+    </div>
+  );
+};
+
+export default PhotoSearch;
