@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PhotoSearch from './components/ImageSearch/PhotoSearch.js'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import NewCollection from './components/Form/NewCollection'
 import Collections from './components/Collections/Collections'
 import Collection from './components/Collections/Collection'
